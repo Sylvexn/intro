@@ -120,3 +120,9 @@ h1 {
     0% { transform: translate(calc(-50% + 100px), calc(-50% + 100px)); } /* Adjust as needed */
     100% { transform: translate(calc(-50% + 150px), calc(-50% + 100px)); } /* Adjust as needed */
 }
+@media only screen and (max-width: 600px) {
+    /* Styles for screens that are 600px or less */
+    h1 {
+        font-size: 48px;
+    }
+}
