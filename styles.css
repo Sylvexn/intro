@@ -10,7 +10,20 @@ body {
     flex-direction: column;
     cursor: none;
 }
-
+h1 {
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Open Sans', sans-serif;
+    font-size: 96px;
+    color: rgba(255, 255, 255, 0);
+    animation: fly-in 2s ease-in-out forwards;
+}
+#period {
+    color: white;
+    animation: colorChange 0s 2s forwards, blink 1s ease-in-out infinite 2s;
+}
 #particles-js {
     position: absolute;
     width: 100%;
@@ -36,23 +49,6 @@ body {
     border: 2px solid;
     animation: ripple 4s ease-in-out infinite;
 }
-
-@keyframes ripple {
-    0% {transform: scale(0); opacity: 1;}
-    100% {transform: scale(1); opacity: 0;}
-}
-
-h1 {
-    position: absolute;
-    top: -100px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-family: 'Open Sans', sans-serif;
-    font-size: 96px;
-    color: rgba(255, 255, 255, 0);
-    animation: fly-in 2s ease-in-out forwards;
-}
-
 @keyframes fly-in {
     0% {
         top: -100px;
@@ -67,16 +63,60 @@ h1 {
         color: rgba(255, 255, 255, 1);
     }
 }
-#period {
-    color: white;
-    animation: colorChange 0s 2s forwards, blink 1s ease-in-out infinite 2s;
-}
-
 @keyframes blink {
     0%, 100% {opacity: 1;}
     50% {opacity: 0;}
 }
-
 @keyframes colorChange {
     100% {color: green;}
+}
+@keyframes fade-in {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+@keyframes ripple {
+    0% {transform: scale(0); opacity: 1;}
+    100% {transform: scale(1); opacity: 0;}
+}
+#center-img, #left-img, #right-img {
+    position: absolute;
+    top: 50%; /* Add this line */
+    left: 50%; /* Add this line */
+    transform: translate(-50%, -50%); /* Add this line */
+    width: 100px;
+    height: 100px;
+    opacity: 0;
+    filter: invert(100%);
+}
+#center-img {
+    animation: fade-in 2s ease-in-out forwards, move-down 2s ease-in-out forwards;
+    animation-delay: 2s, 2s;
+}
+
+#left-img, #right-img {
+    animation: fade-in 2s ease-in-out forwards, move 2s ease-in-out forwards;
+    animation-delay: 4s, 4s;
+}
+
+#left-img {
+    animation-name: fade-in, move-left;
+}
+
+#right-img {
+    animation-name: fade-in, move-right;
+}
+
+@keyframes move-down {
+    0% { transform: translate(-50%, -50%); }
+    100% { transform: translate(-50%, calc(-50% + 100px)); } /* Adjust as needed */
+}
+
+@keyframes move-left {
+    0% { transform: translate(calc(-50% - 100px), calc(-50% + 100px)); } /* Adjust as needed */
+    100% { transform: translate(calc(-50% - 150px), calc(-50% + 100px)); } /* Adjust as needed */
+}
+
+@keyframes move-right {
+    0% { transform: translate(calc(-50% + 100px), calc(-50% + 100px)); } /* Adjust as needed */
+    100% { transform: translate(calc(-50% + 150px), calc(-50% + 100px)); } /* Adjust as needed */
 }
